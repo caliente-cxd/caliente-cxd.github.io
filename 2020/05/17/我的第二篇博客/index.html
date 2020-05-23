@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://caliente-cxd.github.io">
   <title>我的第二篇博客 | caliente</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程创建的方式和优缺点">
+  <meta name="description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我的第二篇博客">
 <meta property="og:url" content="https://caliente-cxd.github.io/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="caliente">
-<meta property="og:description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程创建的方式和优缺点">
+<meta property="og:description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程">
 <meta property="og:locale" content="CH">
 <meta property="article:published_time" content="2020-05-17T08:38:49.000Z">
-<meta property="article:modified_time" content="2020-05-23T09:04:59.284Z">
+<meta property="article:modified_time" content="2020-05-23T11:50:51.171Z">
 <meta property="article:author" content="caliente">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">760字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -202,7 +202,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -214,8 +214,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>记录一些面试的问题，补充基础。</p>
-<h1 id="【面试1】-Java多线程创建的方式和优缺点"><a href="#【面试1】-Java多线程创建的方式和优缺点" class="headerlink" title="【面试1】 Java多线程创建的方式和优缺点"></a>【面试1】 Java多线程创建的方式和优缺点</h1><a id="more"></a>
-<h2 id="一、Java创建线程的三种方式"><a href="#一、Java创建线程的三种方式" class="headerlink" title="一、Java创建线程的三种方式"></a>一、Java创建线程的三种方式</h2><h1 id="1-继承Thread类创建线程类"><a href="#1-继承Thread类创建线程类" class="headerlink" title="1.继承Thread类创建线程类"></a>1.继承Thread类创建线程类</h1><ul>
+<h1 id="【面试1】-Java多线程"><a href="#【面试1】-Java多线程" class="headerlink" title="【面试1】 Java多线程"></a>【面试1】 Java多线程</h1><a id="more"></a>
+<h2 id="一-Java创建线程的三种方式以及优缺点"><a href="#一-Java创建线程的三种方式以及优缺点" class="headerlink" title="一.Java创建线程的三种方式以及优缺点"></a>一.Java创建线程的三种方式以及优缺点</h2><h2 id="1-继承Thread类创建线程类"><a href="#1-继承Thread类创建线程类" class="headerlink" title="1.继承Thread类创建线程类"></a>1.继承Thread类创建线程类</h2><ul>
 <li>定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。</li>
 </ul>
 <ul>
@@ -231,9 +231,9 @@
 <li>创建 Runnable实现类的实例，并以此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。</li>
 </ul>
 <ul>
-<li>调用线程对象的start()方法来启动该线程。<h2 id="3-通过Callable和Future创建线程"><a href="#3-通过Callable和Future创建线程" class="headerlink" title="3.通过Callable和Future创建线程"></a>3.通过Callable和Future创建线程</h2></li>
+<li>调用线程对象的start()方法来启动该线程。</li>
 </ul>
-<ul>
+<h2 id="3-通过Callable和Future创建线程"><a href="#3-通过Callable和Future创建线程" class="headerlink" title="3.通过Callable和Future创建线程"></a>3.通过Callable和Future创建线程</h2><ul>
 <li>创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。</li>
 </ul>
 <ul>
@@ -246,18 +246,11 @@
 <li>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值</li>
 </ul>
 <hr>
-<h1 id="二、创建线程的三种方式的对比"><a href="#二、创建线程的三种方式的对比" class="headerlink" title="二、创建线程的三种方式的对比"></a>二、创建线程的三种方式的对比</h1><h2 id="1、采用实现Runnable、Callable接口的方式创建多线程时，"><a href="#1、采用实现Runnable、Callable接口的方式创建多线程时，" class="headerlink" title="1、采用实现Runnable、Callable接口的方式创建多线程时，"></a>1、采用实现Runnable、Callable接口的方式创建多线程时，</h2><p>优势是：</p>
-<p>线程类只是实现了Runnable接口或Callable接口，还可以继承其他类。</p>
-<p>在这种方式下，多个线程可以共享同一个target对象，所以非常适合多个相同线程来处理同一份资源的情况，从而可以将CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。</p>
-<p>劣势是：</p>
-<p>编程稍微复杂，如果要访问当前线程，则必须使用Thread.currentThread()方法。</p>
-<hr>
-<h2 id="2、使用继承Thread类的方式创建多线程时，"><a href="#2、使用继承Thread类的方式创建多线程时，" class="headerlink" title="2、使用继承Thread类的方式创建多线程时，"></a>2、使用继承Thread类的方式创建多线程时，</h2><p>优势是：</p>
-<p>编写简单，如果需要访问当前线程，则无需使用Thread.currentThread()方法，直接使用this即可获得当前线程。</p>
-<p>劣势是：</p>
-<p>线程类已经继承了Thread类，所以不能再继承其他父类。</p>
-<hr>
-<h2 id="3、Runnable和Callable的区别"><a href="#3、Runnable和Callable的区别" class="headerlink" title="3、Runnable和Callable的区别"></a>3、Runnable和Callable的区别</h2><ul>
+<h1 id="优缺点对比"><a href="#优缺点对比" class="headerlink" title="优缺点对比"></a>优缺点对比</h1><h2 id="1-采用实现Runnable、Callable接口的方式创建多线程"><a href="#1-采用实现Runnable、Callable接口的方式创建多线程" class="headerlink" title="1.采用实现Runnable、Callable接口的方式创建多线程"></a>1.采用实现Runnable、Callable接口的方式创建多线程</h2><p>优势：线程类只是实现了Runnable接口或Callable接口，还可以继承其他类。<br>在这种方式下，多个线程可以共享同一个target对象，所以非常适合多个相同线程来处理同一份资源的情况，从而可以将CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。</p>
+<p>劣势：编程稍微复杂，如果要访问当前线程，则必须使用Thread.currentThread()方法。</p>
+<h2 id="2-使用继承Thread类的方式创建多线程"><a href="#2-使用继承Thread类的方式创建多线程" class="headerlink" title="2.使用继承Thread类的方式创建多线程"></a>2.使用继承Thread类的方式创建多线程</h2><p>优势：编写简单，如果需要访问当前线程，则无需使用Thread.currentThread()方法，直接使用this即可获得当前线程。</p>
+<p>劣势：线程类已经继承了Thread类，所以不能再继承其他父类。</p>
+<h2 id="3-Runnable和Callable的区别"><a href="#3-Runnable和Callable的区别" class="headerlink" title="3.Runnable和Callable的区别"></a>3.Runnable和Callable的区别</h2><ul>
 <li><p>Callable规定（重写）的方法是call()，Runnable规定（重写）的方法是run()。</p>
 </li>
 <li><p>Callable的任务执行后可返回值，而Runnable的任务是不能返回值的。</p>
@@ -267,6 +260,20 @@
 <li><p>运行Callable任务可以拿到一个Future对象，表示异步计算的结果。它提供了检查计算是否完成的方法，以等待计算的完成，并检索计算的结果。通过Future对象可以了解任务执行情况，可取消任务的执行，还可获取执行结果。</p>
 </li>
 </ul>
+<hr>
+<h2 id="二-死锁以及如何防止"><a href="#二-死锁以及如何防止" class="headerlink" title="二.死锁以及如何防止"></a>二.死锁以及如何防止</h2><h2 id="1-死锁产生的条件"><a href="#1-死锁产生的条件" class="headerlink" title="1.死锁产生的条件##"></a>1.死锁产生的条件##</h2><p>   死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。</p>
+<p>（1）互斥条件。进程对所分配到的资源进行排他性使用，即在一段时间内，某资源只能被一个进程占用。如果此时还有其他进程请求该资源，则请求进程只能等待，直至占有该资源的进程用毕释放。</p>
+<p>（2）请求和保持条件。进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源已被其他进程占有，此时请求进程被阻塞，但对自己以获得的资源保持不放。</p>
+<p>（3）不可抢占条件。进程已获得的资源在未使用完之前不能被抢占，只能在进程使用完时由自己释放。</p>
+<p>（4）循环等待条件。</p>
+<h2 id="2-检测死锁"><a href="#2-检测死锁" class="headerlink" title="2.检测死锁"></a>2.检测死锁</h2><h3 id="2-1-Jstack命令"><a href="#2-1-Jstack命令" class="headerlink" title="2.1 Jstack命令"></a>2.1 Jstack命令</h3><ul>
+<li>jstack是java虚拟机自带的一种堆栈跟踪工具。jstack用于打印出给定的java进程ID或core file或远程调试服务的Java堆栈信息。</li>
+</ul>
+<p>（1）.首先通过jps确定当前执行任务的进程号:$ jps</p>
+<p>（2）.然后执行jstack命令查看当前进程堆栈信息：$ jstack -F 进程号</p>
+<h2 id="3-死锁预防"><a href="#3-死锁预防" class="headerlink" title="3.死锁预防"></a>3.死锁预防</h2><h3 id="3-1-以确定的顺序获得锁"><a href="#3-1-以确定的顺序获得锁" class="headerlink" title="3.1 以确定的顺序获得锁"></a>3.1 以确定的顺序获得锁</h3><p>1、加锁顺序<br>如果必须获取多个锁，那么在设计的时候需要充分考虑不同线程之前获得锁的顺序。</p>
+<h3 id="3-2-超时放弃"><a href="#3-2-超时放弃" class="headerlink" title="3.2 超时放弃"></a>3.2 超时放弃</h3><p>当使用synchronized关键词提供的内置锁时，只要线程没有获得锁，那么就会永远等待下去，然而Lock接口提供了boolean tryLock(long time, TimeUnit unit) throws InterruptedException方法，该方法可以按照固定时长等待锁，因此线程可以在获取锁超时以后，主动释放之前已经获得的所有的锁。通过这种方式，也可以很有效地避免死锁。</p>
+<hr>
 
       
 	  
@@ -465,7 +472,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【面试1】-Java多线程创建的方式和优缺点"><span class="toc-number">1.</span> <span class="toc-text">【面试1】 Java多线程创建的方式和优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Java创建线程的三种方式"><span class="toc-number">1.1.</span> <span class="toc-text">一、Java创建线程的三种方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-继承Thread类创建线程类"><span class="toc-number">2.</span> <span class="toc-text">1.继承Thread类创建线程类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-通过Runnable接口创建线程类"><span class="toc-number">2.1.</span> <span class="toc-text">2.通过Runnable接口创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-通过Callable和Future创建线程"><span class="toc-number">2.2.</span> <span class="toc-text">3.通过Callable和Future创建线程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、创建线程的三种方式的对比"><span class="toc-number">3.</span> <span class="toc-text">二、创建线程的三种方式的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、采用实现Runnable、Callable接口的方式创建多线程时，"><span class="toc-number">3.1.</span> <span class="toc-text">1、采用实现Runnable、Callable接口的方式创建多线程时，</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、使用继承Thread类的方式创建多线程时，"><span class="toc-number">3.2.</span> <span class="toc-text">2、使用继承Thread类的方式创建多线程时，</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Runnable和Callable的区别"><span class="toc-number">3.3.</span> <span class="toc-text">3、Runnable和Callable的区别</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【面试1】-Java多线程"><span class="toc-number">1.</span> <span class="toc-text">【面试1】 Java多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Java创建线程的三种方式以及优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一.Java创建线程的三种方式以及优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-继承Thread类创建线程类"><span class="toc-number">1.2.</span> <span class="toc-text">1.继承Thread类创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-通过Runnable接口创建线程类"><span class="toc-number">1.3.</span> <span class="toc-text">2.通过Runnable接口创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-通过Callable和Future创建线程"><span class="toc-number">1.4.</span> <span class="toc-text">3.通过Callable和Future创建线程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优缺点对比"><span class="toc-number">2.</span> <span class="toc-text">优缺点对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-采用实现Runnable、Callable接口的方式创建多线程"><span class="toc-number">2.1.</span> <span class="toc-text">1.采用实现Runnable、Callable接口的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用继承Thread类的方式创建多线程"><span class="toc-number">2.2.</span> <span class="toc-text">2.使用继承Thread类的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Runnable和Callable的区别"><span class="toc-number">2.3.</span> <span class="toc-text">3.Runnable和Callable的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-死锁以及如何防止"><span class="toc-number">2.4.</span> <span class="toc-text">二.死锁以及如何防止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-死锁产生的条件"><span class="toc-number">2.5.</span> <span class="toc-text">1.死锁产生的条件##</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-检测死锁"><span class="toc-number">2.6.</span> <span class="toc-text">2.检测死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Jstack命令"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.1 Jstack命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-死锁预防"><span class="toc-number">2.7.</span> <span class="toc-text">3.死锁预防</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-以确定的顺序获得锁"><span class="toc-number">2.7.1.</span> <span class="toc-text">3.1 以确定的顺序获得锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-超时放弃"><span class="toc-number">2.7.2.</span> <span class="toc-text">3.2 超时放弃</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
