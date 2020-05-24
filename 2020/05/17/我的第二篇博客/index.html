@@ -16,9 +16,9 @@
 <meta property="og:description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程">
 <meta property="og:locale" content="CH">
 <meta property="og:image" content="https://caliente-cxd.github.io/img/1.png">
-<meta property="og:image" content="https://caliente-cxd.github.io/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/img/2.png">
+<meta property="og:image" content="https://caliente-cxd.github.io/img/2.png">
 <meta property="article:published_time" content="2020-05-17T08:38:49.000Z">
-<meta property="article:modified_time" content="2020-05-24T06:08:10.797Z">
+<meta property="article:modified_time" content="2020-05-24T07:07:45.980Z">
 <meta property="article:author" content="caliente">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">1.7k字</span>
       </span>
     </span>
 
@@ -205,7 +205,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -280,12 +280,18 @@
 <h2 id="三-ThreadLocal原理"><a href="#三-ThreadLocal原理" class="headerlink" title="三.ThreadLocal原理"></a>三.ThreadLocal原理</h2><p>ThreadLocal是线程的内部存储类，可以在指定线程内存储数据。只有指定线程可以得到存储数据。</p>
 <p>每个线程都有一个ThreadLocalMap的实例对象，并且通过ThreadLocal管理ThreadLocalMap。<br><img src="/img/1.png" alt=""></p>
 <p>每个新线程都会实例化为一个ThreadLocalMap并且赋值给成员变量ThreadLocals，使用时若已经存在threadLocals则直接使用已经存在的对象。</p>
-<h3 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h3><p>当某些数据是以线程为作用域并且不同线程有不同数据副本时，考虑ThreadLocal。</p>
-<p>无状态，副本变量独立后不影响业务逻辑的高并发场景。</p>
-<p>如果如果业务逻辑强依赖于副本变量，则不适合用ThreadLocal解决。</p>
+<h3 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h3><p>ThreadLocal 的特性也导致了应用场景比较广泛，主要的应用场景如下：</p>
+<ul>
+<li>线程间数据隔离，各线程的 ThreadLocal 互不影响</li>
+<li>方便同一个线程使用某一对象，避免不必要的参数传递</li>
+<li>全链路追踪中的 traceId 或者流程引擎中上下文的传递一般采用 ThreadLocal</li>
+<li>Spring 事务管理器采用了 ThreadLocal</li>
+<li>Spring MVC 的 RequestContextHolder 的实现使用了 ThreadLocal</li>
+</ul>
 <h3 id="2-ThreadLocalMap"><a href="#2-ThreadLocalMap" class="headerlink" title="2.ThreadLocalMap"></a>2.ThreadLocalMap</h3><p>ThreadLocalMap为每个Thread都维护了一个数组table，ThreadLocal确定了一个数组下标，而这个下标是value存储的对应位置。</p>
 <p>ThreadLocalMaps是延迟构造的，因此只有在至少要放置一个条目时才创建。</p>
-<p>ThreadLocalMap初始化时创建了默认长度是16的Entry数组。通过hashCode与length位运算确定索引值i。<br><img src="img/2.png" alt=""></p>
+<p>ThreadLocalMap初始化时创建了默认长度是16的Entry数组。通过hashCode与length位运算确定索引值i。</p>
+<p>从源码中看到 ThreadLocalMap 其实就是一个简单的 Map 结构，底层是数组，有初始化大小，也有扩容阈值大小，数组的元素是 Entry，Entry 的 key 就是 ThreadLocal 的引用，value 是 ThreadLocal 的值。ThreadLocalMap 解决 hash 冲突的方式采用的是线性探测法，如果发生冲突会继续寻找下一个空的位置。<br><img src="/img/2.png" alt=""></p>
 <p>每个Thread都有一个ThreadLocalMap类型。相当于每个线程Thread都有一个Entry型的数组table。而一切读取过程都是通过操作这个数组table进行的。</p>
 
       
