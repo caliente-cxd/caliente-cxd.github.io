@@ -15,11 +15,13 @@
 <meta property="og:site_name" content="caliente">
 <meta property="og:description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程">
 <meta property="og:locale" content="CH">
+<meta property="og:image" content="https://caliente-cxd.github.io/img/1.png">
 <meta property="article:published_time" content="2020-05-17T08:38:49.000Z">
-<meta property="article:modified_time" content="2020-05-24T05:36:10.259Z">
+<meta property="article:modified_time" content="2020-05-24T05:56:22.298Z">
 <meta property="article:author" content="caliente">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://caliente-cxd.github.io/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="caliente" type="application/atom+xml">
   
@@ -275,7 +277,7 @@
 <h4 id="3-2-超时放弃"><a href="#3-2-超时放弃" class="headerlink" title="3.2 超时放弃"></a>3.2 超时放弃</h4><p>当使用synchronized关键词提供的内置锁时，只要线程没有获得锁，那么就会永远等待下去，然而Lock接口提供了boolean tryLock(long time, TimeUnit unit) throws InterruptedException方法，该方法可以按照固定时长等待锁，因此线程可以在获取锁超时以后，主动释放之前已经获得的所有的锁。通过这种方式，也可以很有效地避免死锁。</p>
 <hr>
 <h2 id="三-ThreadLocal原理"><a href="#三-ThreadLocal原理" class="headerlink" title="三.ThreadLocal原理"></a>三.ThreadLocal原理</h2><p>ThreadLocal是线程的内部存储类，可以在指定线程内存储数据。只有指定线程可以得到存储数据。</p>
-<p>每个线程都有一个ThreadLocalMap的实例对象，并且通过ThreadLocal管理ThreadLocalMap。<br>    /* ThreadLocal values pertaining to this thread. This map is maintained<br>     * by the ThreadLocal class. */<br>    ThreadLocal.ThreadLocalMap threadLocals = null;</p>
+<p>每个线程都有一个ThreadLocalMap的实例对象，并且通过ThreadLocal管理ThreadLocalMap。<br><img src="/img/1.png" alt=""></p>
 <p>每个新线程都会实例化为一个ThreadLocalMap并且赋值给成员变量ThreadLocals，使用时若已经存在threadLocals则直接使用已经存在的对象。</p>
 <h3 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h3><p>当某些数据是以线程为作用域并且不同线程有不同数据副本时，考虑ThreadLocal。</p>
 <p>无状态，副本变量独立后不影响业务逻辑的高并发场景。</p>
@@ -440,18 +442,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          我的第一篇博客
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客</div>
       <i class="icon-circle-right"></i>
     </a>
   
