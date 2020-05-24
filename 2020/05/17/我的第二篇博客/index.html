@@ -16,8 +16,9 @@
 <meta property="og:description" content="记录一些面试的问题，补充基础。 【面试1】 Java多线程">
 <meta property="og:locale" content="CH">
 <meta property="og:image" content="https://caliente-cxd.github.io/img/1.png">
+<meta property="og:image" content="https://caliente-cxd.github.io/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/img/2.png">
 <meta property="article:published_time" content="2020-05-17T08:38:49.000Z">
-<meta property="article:modified_time" content="2020-05-24T05:56:22.298Z">
+<meta property="article:modified_time" content="2020-05-24T06:08:10.797Z">
 <meta property="article:author" content="caliente">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -195,7 +196,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -282,6 +283,10 @@
 <h3 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h3><p>当某些数据是以线程为作用域并且不同线程有不同数据副本时，考虑ThreadLocal。</p>
 <p>无状态，副本变量独立后不影响业务逻辑的高并发场景。</p>
 <p>如果如果业务逻辑强依赖于副本变量，则不适合用ThreadLocal解决。</p>
+<h3 id="2-ThreadLocalMap"><a href="#2-ThreadLocalMap" class="headerlink" title="2.ThreadLocalMap"></a>2.ThreadLocalMap</h3><p>ThreadLocalMap为每个Thread都维护了一个数组table，ThreadLocal确定了一个数组下标，而这个下标是value存储的对应位置。</p>
+<p>ThreadLocalMaps是延迟构造的，因此只有在至少要放置一个条目时才创建。</p>
+<p>ThreadLocalMap初始化时创建了默认长度是16的Entry数组。通过hashCode与length位运算确定索引值i。<br><img src="img/2.png" alt=""></p>
+<p>每个Thread都有一个ThreadLocalMap类型。相当于每个线程Thread都有一个Entry型的数组table。而一切读取过程都是通过操作这个数组table进行的。</p>
 
       
 	  
@@ -442,11 +447,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2020/05/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          我的第一篇博客
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -471,7 +480,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【面试1】-Java多线程"><span class="toc-number">1.</span> <span class="toc-text">【面试1】 Java多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Java创建线程的三种方式以及优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一.Java创建线程的三种方式以及优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-继承Thread类创建线程类"><span class="toc-number">1.2.</span> <span class="toc-text">1.继承Thread类创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-通过Runnable接口创建线程类"><span class="toc-number">1.3.</span> <span class="toc-text">2.通过Runnable接口创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-通过Callable和Future创建线程"><span class="toc-number">1.4.</span> <span class="toc-text">3.通过Callable和Future创建线程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优缺点对比"><span class="toc-number">2.</span> <span class="toc-text">优缺点对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-采用实现Runnable、Callable接口的方式创建多线程"><span class="toc-number">2.1.</span> <span class="toc-text">1.采用实现Runnable、Callable接口的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用继承Thread类的方式创建多线程"><span class="toc-number">2.2.</span> <span class="toc-text">2.使用继承Thread类的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Runnable和Callable的区别"><span class="toc-number">2.3.</span> <span class="toc-text">3.Runnable和Callable的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-死锁以及如何防止"><span class="toc-number">2.4.</span> <span class="toc-text">二.死锁以及如何防止</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-死锁产生的条件"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.死锁产生的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-检测死锁"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.检测死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Jstack命令"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">2.1 Jstack命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-死锁预防"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.死锁预防</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-以确定的顺序获得锁"><span class="toc-number">2.4.3.1.</span> <span class="toc-text">3.1 以确定的顺序获得锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-超时放弃"><span class="toc-number">2.4.3.2.</span> <span class="toc-text">3.2 超时放弃</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-ThreadLocal原理"><span class="toc-number">2.5.</span> <span class="toc-text">三.ThreadLocal原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-应用场景"><span class="toc-number">2.5.1.</span> <span class="toc-text">1.应用场景</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【面试1】-Java多线程"><span class="toc-number">1.</span> <span class="toc-text">【面试1】 Java多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Java创建线程的三种方式以及优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一.Java创建线程的三种方式以及优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-继承Thread类创建线程类"><span class="toc-number">1.2.</span> <span class="toc-text">1.继承Thread类创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-通过Runnable接口创建线程类"><span class="toc-number">1.3.</span> <span class="toc-text">2.通过Runnable接口创建线程类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-通过Callable和Future创建线程"><span class="toc-number">1.4.</span> <span class="toc-text">3.通过Callable和Future创建线程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优缺点对比"><span class="toc-number">2.</span> <span class="toc-text">优缺点对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-采用实现Runnable、Callable接口的方式创建多线程"><span class="toc-number">2.1.</span> <span class="toc-text">1.采用实现Runnable、Callable接口的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用继承Thread类的方式创建多线程"><span class="toc-number">2.2.</span> <span class="toc-text">2.使用继承Thread类的方式创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Runnable和Callable的区别"><span class="toc-number">2.3.</span> <span class="toc-text">3.Runnable和Callable的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-死锁以及如何防止"><span class="toc-number">2.4.</span> <span class="toc-text">二.死锁以及如何防止</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-死锁产生的条件"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.死锁产生的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-检测死锁"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.检测死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Jstack命令"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">2.1 Jstack命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-死锁预防"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.死锁预防</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-以确定的顺序获得锁"><span class="toc-number">2.4.3.1.</span> <span class="toc-text">3.1 以确定的顺序获得锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-超时放弃"><span class="toc-number">2.4.3.2.</span> <span class="toc-text">3.2 超时放弃</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-ThreadLocal原理"><span class="toc-number">2.5.</span> <span class="toc-text">三.ThreadLocal原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-应用场景"><span class="toc-number">2.5.1.</span> <span class="toc-text">1.应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ThreadLocalMap"><span class="toc-number">2.5.2.</span> <span class="toc-text">2.ThreadLocalMap</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
